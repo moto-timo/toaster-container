@@ -80,7 +80,19 @@ function fail () {
 
     echo "FAILURE: See logs in $tempdir"
     if [ "" != "$SHOW_LOGS_ON_FAILURE" ]; then
-         printf "******************toaster.log*******************\n\n"
+	 printf "******************bitbake-cookerdaemon.log*******************\n"
+	 if [ "" != "$cookerdaemonlog" ]; then
+	     cat $cookerdaemonlog
+	 fi
+	 printf "******************bitbake-cookerdaemon.log*******************\n\n"
+
+	 printf "******************toastertest*******************\n"
+	 if [ "" != "$toastertest" ]; then
+	     cat $toastertest
+	 fi
+	 printf "******************toastertest*******************\n\n"
+
+         printf "\n******************toaster.log*******************\n\n"
          if [ "" != "$toasterlog" ]; then
              cat $toasterlog
          fi
@@ -209,6 +221,8 @@ fi
 tempdir=$(mktemp -d --suffix toastertest --tmpdir)
 echo "Logs in $tempdir"
 
+cookerdaemonlog=$tempdir/toasterbuild/build-toaster-2/bitbake-cookerdaemon.log
+toastertest=/tmp/tmp.*toastertest
 toasterlog=$tempdir/toaster.log
 seleniumlog=$tempdir/selenium.log
 toaster_ui_log=$tempdir/toasterbuild/build-toaster-2/toaster_ui.log
@@ -217,6 +231,7 @@ toaster_ui_log=$tempdir/toasterbuild/build-toaster-2/toaster_ui.log
 # Create a virtualenv that contains the modules needed by smoketests.py
 virtualenv $tempdir/selenium
 . $tempdir/selenium/bin/activate
+pip install --upgrade pip
 pip install selenium==$selenium_version
 
 
