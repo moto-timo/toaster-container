@@ -15,8 +15,6 @@ env:
     # DOCKERHUB_TAGS are the tags to use for the REPO when pushing to dockerhub
     # POKYBRANCH is the branch of poky selected by toaster to use during tests.
     - REPO=crops/toaster-dunfell BRANCH=dunfell DOCKERHUB_TAG="latest" POKYBRANCH=dunfell
-    - REPO=crops/toaster-zeus BRANCH=zeus DOCKERHUB_TAG="latest" POKYBRANCH=zeus
-    - REPO=crops/toaster-warrior BRANCH=warrior DOCKERHUB_TAG="latest" POKYBRANCH=warrior
     - REPO=crops/toaster-master BRANCH=master DOCKERHUB_TAG="latest" POKYBRANCH=master
 
   global:
@@ -42,8 +40,6 @@ script:
 notifications:
   email:
     recipients:
-      - timothy.t.orling@intel.com
-      - david.reyna@windriver.com
-      - randy.e.witt@intel.com
+      - ticotimo@gmail.com
     on_success: change
     on_failure: always
