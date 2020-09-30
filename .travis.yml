@@ -35,7 +35,7 @@ script:
   # Build for the "local" repo, the deploy will handle setting the correct
   # repo name before pushing to dockerhub.
   - annotate-output docker build --build-arg GITREPO="${GITREPO}" --build-arg BRANCH="${BRANCH}" -t local .
-  - annotate-output bash -c "cd tests; SELENIUM_TIMEOUT=1800 IMAGE=local SHOW_LOGS_ON_FAILURE=1 ./runtests.sh"
+  - annotate-output bash -c "cd tests; SELENIUM_TIMEOUT=600 IMAGE=local SHOW_LOGS_ON_FAILURE=1 ./runtests.sh"
 
 notifications:
   email:
