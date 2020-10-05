@@ -88,15 +88,17 @@ function fail () {
 
 	 printf "******************toastertest*******************\n"
 	 if [ "" != "$toastertest" ]; then
-	     cat $toastertest
+	     ls -la $toastertest
+	     ls -la $toastertest/selenium
+	     ls -la $toastertest/toasterbuild
 	 fi
 	 printf "******************toastertest*******************\n\n"
 
-         printf "\n******************toaster.log*******************\n\n"
+         printf "******************toaster.log*******************\n\n"
          if [ "" != "$toasterlog" ]; then
              cat $toasterlog
          fi
-         printf "******************toaster.log*******************\n\n"
+         printf "\n******************toaster.log*******************\n\n"
 
          printf "******************toaster_ui.log*******************\n"
          if [ "" != "$toaster_ui_log" ]; then
@@ -202,7 +204,7 @@ fi
 if [ "" != "$SELENIUM_VERSION" ]; then
     selenium_version="$SELENIUM_VERSION"
 else
-    selenium_version=3.141.0
+    selenium_version=3.141
 fi
 
 if [ "" != "$POKYBRANCH" ]; then
