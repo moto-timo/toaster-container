@@ -121,6 +121,10 @@ function fail () {
     exit 1
 }
 
+function pull_selenium() {
+	docker pull selenium/standalone-firefox:$selenium_version
+}
+
 function start_toaster() {
     mkdir $tempdir/toasterbuild
 
@@ -238,6 +242,7 @@ pip install selenium==$selenium_version
 
 
 # Run the containers
+pull_selenium
 start_toaster
 start_selenium
 
