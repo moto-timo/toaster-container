@@ -213,7 +213,7 @@ if [[ "" == "$POKYDIR" ]]; then
     fi
     echo "layerindex priming PASSED"
 fi
-echo "ALL TESTS PASSED!"; exit 0
+echo "ALL TESTS PASSED!"
 
 function fail () {
 set +ex
@@ -246,19 +246,11 @@ if [ "" != "$SHOW_LOGS_ON_FAILURE" ]; then
      xxd screenshot.png
      printf "******************screenshot.hex******************\n\n"
 fi
-
-exit 1
 }
 trap fail SIGINT SIGTERM ERR
 
-function cleanup()
-{
 printf "\n\nStopping containers...\n"
 stop_containers
 
 printf "\n\nRemoving temporary directory...\n"
 time rm -rf $tempdir
-
-echo $(ps -a)
-}
-trap cleanup EXIT
