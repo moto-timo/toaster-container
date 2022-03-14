@@ -80,6 +80,7 @@ jobs:
 
       # Test the image
       - name: test
+        shell: '/bin/bash {0}'
         run: |
           cd tests; SELENIUM_TIMEOUT=600 IMAGE=${REPO}:${DOCKERHUB_TAG}  SHOW_LOGS_ON_FAILURE=1 source ./runtests.sh
 
